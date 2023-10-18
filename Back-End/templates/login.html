@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Please login</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+<h2>Welcome back! Please log in.</h2>
+
+<form method="post">
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="email" placeholder="Enter Username" name="email" required value="{{  request.form.email }}">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="passwd" required value="{{ request.form.passwd }}">
+
+    <button type="submit">Login</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+<div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {%  for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+</body>
+</html>
